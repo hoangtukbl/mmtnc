@@ -20,6 +20,8 @@ def create_qr_code():
     qr.add_data(website_url)
     qr.make(fit=True)
 
+
+
     # Tạo hình ảnh QR Code
     img = qr.make_image(fill_color="black", back_color="white")
 
