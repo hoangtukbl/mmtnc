@@ -13,7 +13,7 @@ pipeline {
 
         stage('Build and publish Docker Image') {
             steps {
-                withDockerrRegistry(credentialsId: 'dckr_pat_d9POQMYVS737hAgiuzG_4ezUkWg'. url: 'https://index.docker.io/v1/')
+                withDockerrRegistry(credentialsId: 'dckr_pat_d9POQMYVS737hAgiuzG_4ezUkWg', url: 'https://index.docker.io/v1/')
                     bat 'docker build -t 21127466/project3'
                     bat 'docker push 21127466/project3'
 
