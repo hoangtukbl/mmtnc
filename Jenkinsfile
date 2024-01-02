@@ -15,8 +15,8 @@ pipeline {
             steps {
                 script{
                     withDockerrRegistry(credentialsId: 'dckr_pat_d9POQMYVS737hAgiuzG_4ezUkWg', url: 'https://index.docker.io/v1/')
-                        sh 'docker build -t 21127466/project3'
-                        sh 'docker push 21127466/project3'
+                        sh 'docker build -t realanhtu812/21127466'
+                        sh 'docker push realanhtu812/21127466'
                 }
             }
         }
