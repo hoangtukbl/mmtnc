@@ -21,27 +21,14 @@ pipeline {
             }
         }
 
-        // stage('Build Docker Image') {
-        //     steps {
-        //         // Build Docker image
-        //         script {
-        //             docker.build('your-docker-image:latest', '.')
-        //         }
-        //     }
-        // }
-
-        // stage('Deploy to Docker') {
-        //     steps {
-        //         // Deploy Docker image
-        //         script {
-        //             docker.withRegistry('https://registry.example.com', 'your-docker-credentials-id') {
-        //                 def customImage = docker.image('your-docker-image:latest')
-        //                 customImage.inside {
-        //                     // No specific deployment steps needed, as CMD in Dockerfile will run main.py
-        //                 }
-        //             }
-        //         }
-        //     }
-        // }
+    }
+    post{
+        success{
+            echo "success"
+        }
+        failure{
+            echo "Fail"
+        }
     }
 }
+
