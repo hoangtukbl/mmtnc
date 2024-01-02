@@ -14,7 +14,7 @@ pipeline {
         stage('Build and publish Docker Image') {
             steps {
                 script{
-                    withDockerrRegistry(credentialsId: 'dckr_pat_d9POQMYVS737hAgiuzG_4ezUkWg', url: 'https://index.docker.io/v1/')
+                    withDockerRegistry(credentialsId: 'ffde2c91-d7f4-41b4-809a-86d64ae29424', url: 'https://index.docker.io/v1/') 
                         sh 'docker build -t realanhtu812/21127466'
                         sh 'docker push realanhtu812/21127466'
                 }
