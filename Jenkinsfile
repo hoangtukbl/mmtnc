@@ -11,32 +11,34 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Build and publish Docker Image') {
             steps {
-                // Add build steps as needed
+                withDockerrRegistry(credentialsId: 'DockerHub'. url: 'https://index.docker.io/v1/')
+                    bat 'docker build -t 21127466/project3'
+                    bat 'docker push 21127466/project3'
+
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                // Build Docker image
                 script {
-                    // Your build commands or scripts
-                    sh 'echo "Building the project"'
+                    docker.build('your-docker-image:latest', '.')
                 }
             }
         }
 
-        stage('Test') {
+        stage('Deploy to Docker') {
             steps {
-                // Add test steps as needed
+                // Deploy Docker image
                 script {
-                    // Your test commands or scripts
-                    sh 'echo "Running tests"'
-                }
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                // Add deployment steps as needed
-                script {
-                    // Your deployment commands or scripts
-                    sh 'echo "Deploying the project"'
+                    docker.withRegistry('https://registry.example.com', 'your-docker-credentials-id') {
+                        def customImage = docker.image('your-docker-image:latest')
+                        customImage.inside {
+                            // No specific deployment steps needed, as CMD in Dockerfile will run main.py
+                        }
+                    }
                 }
             }
         }
