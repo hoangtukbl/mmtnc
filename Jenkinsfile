@@ -6,7 +6,7 @@ pipeline {
             steps {
                 // Checkout code from GitHub repository
                 script {
-                    git credentialsId: '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', url: 'https://github.com/hoangtukbl/mmtnc.git'
+                    git credentialsId: 'mmtnc', url: 'https://github.com/hoangtukbl/mmtnc.git'
                 }
             }
         }
@@ -14,7 +14,7 @@ pipeline {
         stage('Build and publish Docker Image') {
             steps {
                 script{
-                    withDockerRegistry(credentialsId: 'ffde2c91-d7f4-41b4-809a-86d64ae29424', url: 'https://index.docker.io/v1/') 
+                    withDockerRegistry(credentialsId: 'docker-hub', url: 'https://index.docker.io/v1/') 
                         sh 'docker build -t realanhtu812/21127466'
                         sh 'docker push realanhtu812/21127466'
                 }
